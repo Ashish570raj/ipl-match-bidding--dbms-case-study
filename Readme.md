@@ -4,8 +4,8 @@
 ![DBMS](https://img.shields.io/badge/Database-DBMS-blue)  
 ![SQL](https://img.shields.io/badge/Language-SQL-green)  
 ![MySQL](https://img.shields.io/badge/Database-MySQL-orange)  
-<!-- ![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-blueviolet)   -->
 ![ERD](https://img.shields.io/badge/Model-ER_Diagram-red)  
+<!-- ![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-blueviolet)   -->
 
 ---
 
