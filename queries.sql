@@ -72,6 +72,24 @@ JOIN IPL_TEAM AS T ON TS.TEAM_ID = T.TEAM_ID
 GROUP BY T.TEAM_ID, T.TEAM_NAME
 ORDER BY TotalWins DESC;
 
+-- 7.	Display the bowlers for the Mumbai Indians team.
+
+select t.TEAM_NAME ,p.PLAYER_NAME, tp.PLAYER_ROLE 
+from ipl_team_players as tp 
+join ipl_team as t on t.TEAM_ID=tp.TEAM_ID
+join ipl_player as p on p.PLAYER_ID=tp.PLAYER_ID
+where t.TEAM_NAME='Mumbai Indians' and tp.PLAYER_ROLE='Bowler';
+
+-- 8.	How many all-rounders are there in each team, Display the teams with more than 4 
+--      all-rounders in descending order.
+
+select t.TEAM_NAME , count(tp.PLAYER_ROLE) as total_allrounders
+from ipl_team_players as tp 
+join ipl_team as t on t.TEAM_ID=tp.TEAM_ID
+where total_allrounders >4
+order by total_allrounders desc;
+
+
 
 
 
