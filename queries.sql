@@ -89,6 +89,44 @@ join ipl_team as t on t.TEAM_ID=tp.TEAM_ID
 where total_allrounders >4
 order by total_allrounders desc;
 
+/* 9. Write a query to get the total bidders' points for each bidding status of those bidders who bid on CSK when they won the match in 
+M.Chinnaswamy Stadium bidding year-wise. Note the total bidders’ points in descending order and the year is the bidding year.
+Display columns: bidding status, bid date as year, total bidder’s points*/
+
+select ibd.BID_STATUS, 
+		year(ibd.BID_DATE) as Bidding_year,
+        SUM(ibp.TOTAL_POINTS) as Total_bidding_points
+from ipl_bidding_details as ibd
+join ipl_match_schedule as ims on ibd.SCHEDULE_ID= ims.SCHEDULE_ID
+join ipl_match as im on ims.MATCH_ID = im.MATCH_ID
+join ipl_team as it on it.TEAM_ID = im.MATCH_WINNER
+join ipl_stadium as ist on ims.STADIUM_ID= ist.StadiumId
+join ipl_bidder_points as ibp on ibd.BIDDER_ID = ibp.BIDDER_ID 
+
+where it.TEAM_NAME='Chennai Super Kings'
+	  and ist.Stadium_name='M.Chinnaswamy Stadium'
+      and im.MATCH_WINNER= (
+				select TEAM_ID from ipl_team  where TEAM_NAME='Chennai Super Kings')
+group by ibd.BID_STATUS ,Bidding_year
+order by Total_bidding_points desc;
+
+			-- SELECT
+--   ims.MATCH_ID,
+--   ims.MATCH_DATE,
+--   t.TEAM_NAME AS Winning_Team
+-- FROM
+--   IPL_Match_Schedule AS ims
+-- JOIN
+--   IPL_Stadium AS ist ON ims.STADIUM_ID = ist.StadiumId
+-- JOIN
+--   IPL_Match AS im ON ims.MATCH_ID = im.MATCH_ID
+-- JOIN
+--   IPL_Team AS t ON im.MATCH_WINNER = t.TEAM_ID
+-- WHERE
+--   ist.Stadium_name = 'M. Chinnaswamy Stadium'
+--   AND YEAR(ims.MATCH_DATE) = 2017;
+               
+
 
 
 

@@ -147,6 +147,7 @@ INSERT INTO IPL_Player VALUES
 -- 5. IPL_Team_players
 
 drop table if exists IPL_Team_players;
+
 create table IPL_Team_players(
 TEAM_ID INT NOT NULL,
 PLAYER_ID INT NOT NULL,
