@@ -107,6 +107,7 @@ where it.TEAM_NAME='Chennai Super Kings'
 	  and ist.Stadium_name='M.Chinnaswamy Stadium'
       and im.MATCH_WINNER= (
 				select TEAM_ID from ipl_team  where TEAM_NAME='Chennai Super Kings')
+                AND YEAR(ibd.BID_DATE) = 2017
 group by ibd.BID_STATUS ,Bidding_year
 order by Total_bidding_points desc;
 
@@ -126,6 +127,15 @@ order by Total_bidding_points desc;
 --   ist.Stadium_name = 'M. Chinnaswamy Stadium'
 --   AND YEAR(ims.MATCH_DATE) = 2017;
                
+               
+/* 10.	Extract the Bowlers and All-Rounders that are in the 5 highest number of wickets.
+Note 
+1. Use the performance_dtls column from ipl_player to get the total number of wickets
+2. Do not use the limit method because it might not give appropriate results when players have the same number of wickets
+3.	Do not use joins in any cases.
+4.	Display the following columns teamn_name, player_name, and player_role.
+*/
+
 
 
 
